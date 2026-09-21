@@ -1,0 +1,37 @@
+name: Artifact Between Jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate file
+        run: |
+          mkdir -p output
+          echo "Hello from Job 1" > output/message.txt
+          echo "Artifact successfully created." >> output/message.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: job1-output
+          path: output/message.txt
+
+  use-artifact:
+    needs: create-artifact
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: job1-output
+          path: downloaded
+
+      - name: Read artifact
+        run: |
+          echo "Contents of artifact:"
+          cat downloaded/message.txt
