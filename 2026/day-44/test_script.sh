@@ -2,7 +2,7 @@
 
 echo "Running Day 44 test..."
 
-NAME="GitHub Actions"
+NAME="Broken test"
 
 if [ "$NAME" = "GitHub Actions" ]; then
     echo "Test 1: PASS"
