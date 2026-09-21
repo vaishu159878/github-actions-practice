@@ -1,0 +1,24 @@
+name: Run Real Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x 2026/day-44/test_script.sh
+
+      - name: Run tests
+        run: ./2026/day-44/test_script.sh
