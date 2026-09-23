@@ -1,1 +1,2 @@
 Testing PR lifecycle events
+Testing synchronize event
