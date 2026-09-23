@@ -1,0 +1,22 @@
+name: Smart Triggers
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+
+    paths:
+      - 'src/**'
+      - 'app/**'
+
+jobs:
+  smart-trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show trigger information
+        run: |
+          echo "Smart trigger workflow executed."
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"

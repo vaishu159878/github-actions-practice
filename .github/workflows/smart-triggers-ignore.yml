@@ -1,0 +1,21 @@
+name: Smart Triggers Ignore Docs
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run build
+        run: |
+          echo "Code changes detected."
+          echo "Running build..."
