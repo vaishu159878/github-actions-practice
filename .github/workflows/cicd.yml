@@ -19,14 +19,14 @@ jobs:
         run: echo "Building using docker"
 
   test:
-    needs: [code, build]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: running test-cases
         run: echo "Testing app"
 
   deploy:
-    needs: [test]
+    needs: [build,test]
     runs-on: ubuntu-latest
     steps:
       - name: deploying on the machine
